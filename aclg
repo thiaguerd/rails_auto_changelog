@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'pry'
+require_relative 'lib/diff'
+require_relative 'lib/commit'
+
+args = Hash[ARGV.join(' ').scan(/-(\S*)\s(\S*)/)]
+
+options = { start: args['s'], end: args['e'] }
+
+diff = Diff.new(options)
+
+puts diff.to_s
+
+# COMANDO INICIAL
+# aclg -e 0489b210063d687341032de2eca78d718ae62c46 -s f01cd74c1ad24d23f53d8f7663cae7df2c33185d
+
+# LISTA OS ARQUIVOS ALTERADOS
+# git diff --stat f01cd74c1ad24d23f53d8f7663cae7df2c33185d..0489b210063d687341032de2eca78d718ae62c46 -- ':!*.md'
+
+# GERA PATCH
+# git format-patch f01cd74c1ad24d23f53d8f7663cae7df2c33185d..0489b210063d687341032de2eca78d718ae62c46
+
+# VER LOG DAS ALTERAÇÕES
+# git log f01cd74c1ad24d23f53d8f7663cae7df2c33185d..0489b210063d687341032de2eca78d718ae62c46
+
+# VER BRANCH ORIGNAL DE UM COMMIT
+# git branch --contains 3fc87e57258cbdaea024e20a5b3b455a45f11976
