@@ -1,8 +1,11 @@
 #!/usr/bin/env ruby
 
 require 'pry'
+require_relative 'lib/base'
 require_relative 'lib/diff'
 require_relative 'lib/commit'
+require_relative 'lib/branchs'
+require_relative 'lib/file_changed'
 
 args = Hash[ARGV.join(' ').scan(/-(\S*)\s(\S*)/)]
 
